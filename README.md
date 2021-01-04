@@ -22,12 +22,13 @@ Trust me, it's much better than the vanilla `Diktor` layout.
 ### Linux
 
 #### Problematics
-Changes affect to `XKB` subsystem configuration files, located  in `/usr/share/X11/xkb`.
+Changes affect to `XKB` subsystem configuration files located in `/usr/share/X11/xkb`.
 The configuration file set comes with the specific package of your Linux distribution.
 
 Updating a package through the package manager will replace the modified files with the original ones and this creates some headache.
 
 I created a patch [alter.patch](https://github.com/karmicdude/alter/blob/main/alter.patch) that makes changes to the `XKB` configuration files.
+[Here](#package-manager-skip-options) is how to apply the patch. If you're not interested in avoiding further problems with system update, you can jump right in. 
 
 I propose several ways of solving this issue. You can choose any way that suits you.
 
@@ -66,14 +67,16 @@ When=PostTransaction
 Exec=/bin/sh -c 'patch -d/ -s -p0 < /usr/share/alter-layout/alter.patch'
 EOF
 ```
-Now when you update the system, the `XKB` configuration files will be replaced by the original ones, but afterwards a hook will run which will return everything back to the way it was.
+
+Now when you update the system, the `XKB` configuration files will be replaced by the original ones,
+but afterwards the hook will run and patch will be applied to new configs. Everything will go back to the way it was.
 
 ```bash
 :: Processing package changes...  
 (1/1) reinstalling xkeyboard-config [##############################################] 100%  
 :: Running post-transaction hooks...  
 (1/2) Arming ConditionNeedsUpdate...  
-(2/2) Recovery Custom Keyboard Layouts   <== this is it
+(2/2) Recovery Custom Keyboard Layouts   <== this is it. Patch is applied
 ```
 
 #### Package manager skip options
@@ -85,7 +88,7 @@ sudo patch -d/ -s -p0 < /path/to/arch.patch
 ```
 Now we need to somehow block files changes.
 
-With `pacman` you can use one of two options to [skip files](https://wiki.archlinux.org/index.php/Pacman#Skip_file_from_being_upgraded) from being `updated/installed` to system - `NoUpgrade` or `NoExtract` options in `/etc/pacman.conf`. For example:
+With `pacman` you can use one of two options to [skip files](https://wiki.archlinux.org/index.php/Pacman#Skip_file_from_being_upgraded) from being updated/installed to system - `NoUpgrade` or `NoExtract` options in `/etc/pacman.conf`. For example:
 
 ```bash
 # Uncomment/Add the lines. 
@@ -111,7 +114,7 @@ sudo chmod ugo-w \
 	/usr/share/X11/xkb/symbols/{us,ru} \
 	/usr/share/X11/xkb/rules/{evdev,base}.{lst,xml}
 # But I suspect that the package manager will try to correct the permissions 
-# A more reliable way is to set the immutability attribute.
+# A more reliable way is to set the `immutable` attribute.
 sudo chattr +i \
 	/usr/share/X11/xkb/symbols/{us,ru} \
 	/usr/share/X11/xkb/rules/{evdev,base}.{lst,xml}
