@@ -119,4 +119,4 @@ sudo chattr +i \
 
 ## TODO
 
-* Add Windows installation instructions ([MSKLC](https://www.microsoft.com/en-us/download/details.aspx?id=102134) config + compiled binarys)
+* Add Windows installation instructions ([MSKLC](https://www.microsoft.com/en-us/download/details.aspx?id=102134) config + compiled binaries)
