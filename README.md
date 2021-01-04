@@ -9,13 +9,13 @@
 
 Trust me, it's much better than the vanilla `Diktor` layout.
 
-[![Alter RU Typewriter](https://i.imgur.com/6Al1nBq.png)](https://i.imgur.com/canOIzT.png)
+[![Alter RU Typewriter](https://i.imgur.com/6Al1nBq.png)](https://i.imgur.com/canOIzT.png){:target="_blank"}
 
 ### Alter US Typewriter
 
 `Qwerty`-based layout. Actually, there aren't many changes and I plan to switch to customized `Dvorak` (but it's not sure) after the new [Moonlander](https://www.zsa.io/moonlander) programmable keyboard is delivered to me. Anyway, I'm typing on it now.
 
-[![Alter US Typewriter](https://i.imgur.com/qEsuTTV.png)](https://i.imgur.com/mbz7c9J.png)
+[![Alter US Typewriter](https://i.imgur.com/qEsuTTV.png)](https://i.imgur.com/mbz7c9J.png){:target="_blank"}
 
 ## Installation
 
@@ -27,7 +27,7 @@ The configuration file set comes with the specific package of your Linux distrib
 
 Updating a package through the package manager will replace the modified files with the original ones and this creates some headache.
 
-I created a patch [alter.patch](https://github.com/karmicdude/alter-layout/blob/main/alter.patch) that makes changes to the `XKB` configuration files.
+I created a patch [alter.patch](https://github.com/karmicdude/alter/blob/main/alter.patch) that makes changes to the `XKB` configuration files.
 
 I propose several ways of solving this issue. You can choose any way that suits you.
 
@@ -38,7 +38,7 @@ I use `Arch Linux` as my main distro, so I will give an example based on it.
 The `XKB` subsystem is handled by the `xkeyboard-config` package.
 
 ```bash
-# Create dir for alter-layout patch file
+# Create the direcotry for alter-layout patch file
 sudo mkdir -p /usr/share/alter-layout
 # Download latest patch file from repo
 sudo curl -LJo \
@@ -50,9 +50,9 @@ git clone https://github.com/karmicdude/alter.git
 sudo cp alter/alter.patch /usr/share/alter-layout/
 
 
-# Create hooks directory for pacman
+# Create the hooks directory for pacman
 sudo mkdir -p /etc/pacman.d/hooks
-# Create pacman hook config
+# Create the pacman hook config
 cat << EOF | sudo tee /etc/pacman.d/hooks/layouts.hook
 [Trigger]
 Operation=Install
