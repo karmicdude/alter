@@ -9,13 +9,13 @@
 
 Trust me, it's much better than the vanilla `Diktor` layout.
 
-[![Alter RU Typewriter](https://i.imgur.com/6Al1nBq.png)](https://i.imgur.com/canOIzT.png){:target="_blank"}
+[![Alter RU Typewriter](https://i.imgur.com/6Al1nBq.png)](https://i.imgur.com/canOIzT.png)
 
 ### Alter US Typewriter
 
 `Qwerty`-based layout. Actually, there aren't many changes and I plan to switch to customized `Dvorak` (but it's not sure) after the new [Moonlander](https://www.zsa.io/moonlander) programmable keyboard is delivered to me. Anyway, I'm typing on it now.
 
-[![Alter US Typewriter](https://i.imgur.com/qEsuTTV.png)](https://i.imgur.com/mbz7c9J.png){:target="_blank"}
+[![Alter US Typewriter](https://i.imgur.com/qEsuTTV.png)](https://i.imgur.com/mbz7c9J.png)
 
 ## Installation
 
@@ -116,3 +116,7 @@ sudo chattr +i \
 	/usr/share/X11/xkb/symbols/{us,ru} \
 	/usr/share/X11/xkb/rules/{evdev,base}.{lst,xml}
 ```
+
+## TODO
+
+* Add Windows installation instructions ([MSKLC](https://www.microsoft.com/en-us/download/details.aspx?id=102134) config + compiled binarys)
